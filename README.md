@@ -15,7 +15,7 @@ A full-stack workout tracking app to log sessions, track progress, and visualize
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - A Supabase project with connection strings
 
 ### Setup
@@ -30,6 +30,9 @@ cp .env.example .env
 # Run database migrations
 npx prisma migrate dev
 
+# Generate Prisma client
+npx prisma generate
+
 # Start the dev server
 npm run dev
 ```
@@ -39,17 +42,6 @@ App runs at [http://localhost:3000](http://localhost:3000).
 ## Environment Variables
 
 See `.env.example` for all required variables.
-
-## Project Structure
-
-```
-src/
-  app/        # Next.js App Router pages and layouts
-  components/ # Reusable UI components
-  lib/        # Shared utilities, Prisma client, auth config
-prisma/
-  schema.prisma
-```
 
 ## Contributing
 
