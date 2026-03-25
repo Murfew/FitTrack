@@ -15,12 +15,12 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install
         run: npm ci
+      - name: Generate Prisma Client
+        run: npx prisma generate
       - name: Typecheck
         run: npm run typecheck
       - name: Lint
         run: npm run lint
-      - name: Generate Prisma Client
-        run: npx prisma generate
       - name: Build
         run: npm run build
       - name: Test
