@@ -10,7 +10,8 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write --list-different .",
     "prepare": "husky",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.2.1",
