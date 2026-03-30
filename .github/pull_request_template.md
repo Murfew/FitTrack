@@ -1,25 +1,27 @@
-## What does this PR do?
+<!--
+PR title format: <type>: <short description>
+Types: feat | fix | chore
+Example: feat: add GitHub OAuth provider
+-->
 
-<!-- Brief description of the change and why it's needed -->
+## Closes
 
-## Ticket
+#<!-- ticket number -->
 
-<!-- e.g. Ticket 1-3: Supabase + Prisma setup -->
+---
 
-## Type of change
+## Summary
 
-- [ ] New feature
-- [ ] Bug fix
-- [ ] Refactor
-- [ ] Config / tooling
-- [ ] Docs
+<!-- What does this PR do and why? 1–3 sentences. -->
 
-## Checklist
+---
 
-- [ ] No `.env` values committed
-- [ ] No `console.log`s left in production code
-- [ ] PR is scoped to one ticket / concern
+## Manual testing
 
-## Notes for reviewer
+<!-- Briefly describe what you tested in the browser. Delete if not applicable. -->
 
-<!-- Anything tricky, decisions made, or follow-up tickets needed -->
+---
+
+## Screenshots / recordings
+
+<!-- If this PR touches UI, add before/after screenshots or a short screen recording. Delete if not applicable. -->
