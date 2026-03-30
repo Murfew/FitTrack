@@ -1,9 +1,3 @@
-<!--
-PR title format: <type>: <short description>
-Types: feat | fix | chore
-Example: feat: add GitHub OAuth provider
--->
-
 ## Closes
 
 #<!-- ticket number -->
