@@ -1,25 +1,21 @@
-## What does this PR do?
+## Closes
 
-<!-- Brief description of the change and why it's needed -->
+#<!-- ticket number -->
 
-## Ticket
+---
 
-<!-- e.g. Ticket 1-3: Supabase + Prisma setup -->
+## Summary
 
-## Type of change
+<!-- What does this PR do and why? 1–3 sentences. -->
 
-- [ ] New feature
-- [ ] Bug fix
-- [ ] Refactor
-- [ ] Config / tooling
-- [ ] Docs
+---
 
-## Checklist
+## Manual testing
 
-- [ ] No `.env` values committed
-- [ ] No `console.log`s left in production code
-- [ ] PR is scoped to one ticket / concern
+<!-- Briefly describe what you tested in the browser. Delete if not applicable. -->
 
-## Notes for reviewer
+---
 
-<!-- Anything tricky, decisions made, or follow-up tickets needed -->
+## Screenshots / recordings
+
+<!-- If this PR touches UI, add before/after screenshots or a short screen recording. Delete if not applicable. -->
