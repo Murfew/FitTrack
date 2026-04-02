@@ -32,6 +32,15 @@
         "noExplicitAny": {
           "level": "error"
         }
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "info",
+          "options": {
+            "attributes": ["className", "class"],
+            "functions": ["clsx", "cva", "tw"]
+          }
+        }
       }
     }
   },
@@ -52,5 +61,10 @@
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   }
 }
