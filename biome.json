@@ -5,20 +5,14 @@
     "includes": ["**", "!!.next", "!!node_modules"]
   },
   "formatter": {
-    "enabled": true,
-    "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 80,
-    "attributePosition": "auto",
-    "bracketSameLine": false,
-    "bracketSpacing": true,
     "expand": "auto",
     "useEditorconfig": true
   },
   "linter": {
-    "enabled": true,
     "rules": {
       "recommended": true,
       "correctness": { "useExhaustiveDependencies": "warn" },
@@ -29,9 +23,7 @@
             "allow": ["error", "warn"]
           }
         },
-        "noExplicitAny": {
-          "level": "error"
-        }
+        "noExplicitAny": "error"
       },
       "nursery": {
         "useSortedClasses": {
