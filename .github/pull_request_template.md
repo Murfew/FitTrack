@@ -1,8 +1,4 @@
-## Closes
-
-#<!-- ticket number -->
-
----
+<!-- Closes #issue (delete if no issue) -->
 
 ## Summary
 
@@ -10,9 +6,18 @@
 
 ---
 
-## Manual testing
+## Checklist
 
-<!-- Briefly describe what you tested in the browser. Delete if not applicable. -->
+- [ ] `npm run typecheck` passes
+- [ ] `npm run check:ci` passes
+- [ ] `npm run build` passes
+- [ ] Tests updated or confirmed not needed
+
+---
+
+## Testing
+
+<!-- How was this tested? Browser steps, unit tests, or N/A. -->
 
 ---
 
