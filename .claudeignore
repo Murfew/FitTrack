@@ -1,0 +1,6 @@
+.next/
+.env
+.env.local
+coverage/
+.git/
+*.log
