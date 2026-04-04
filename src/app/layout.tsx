@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.webmanifest',
-  themeColor: '#3730a3',
 };
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
