@@ -1,8 +1,8 @@
-import { Geist } from 'next/font/google';
+import { Geist, Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export default function RootLayout({
   children,
@@ -12,7 +12,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn('dark', 'h-full', 'antialiased', geist.variable)}
+      className={cn(
+        'dark',
+        'h-full',
+        'antialiased',
+        'font-sans',
+        inter.variable
+      )}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
