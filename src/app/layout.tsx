@@ -1,6 +1,27 @@
-import { Geist, Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'FitTrack',
+    template: '%s | FitTrack',
+  },
+  description: 'Track your workouts, nutrition, steps and body weight.',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/manifest.webmanifest',
+  themeColor: '#3730a3',
+};
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
