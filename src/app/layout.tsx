@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Geist, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
@@ -8,7 +8,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
 });
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -27,9 +27,10 @@ export default function RootLayout({
         'h-full',
         'antialiased',
         'font-sans',
-        inter.variable,
         'font-mono',
-        jetbrainsMono.variable
+        jetbrainsMono.variable,
+        'font-sans',
+        geist.variable
       )}
     >
       <body className="flex min-h-full flex-col">{children}</body>
