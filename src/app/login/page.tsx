@@ -1,4 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons';
+import { handleSignIn } from '@/actions/auth';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,8 +10,19 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Muted } from '@/components/ui/typography';
+import { providerMap } from '@/lib/auth';
 
-export default function Login() {
+const providerIcons: Record<string, React.ReactNode> = {
+  github: <SiGithub />,
+};
+
+interface LoginPageProps {
+  searchParams: Promise<{ callbackUrl?: string }>;
+}
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const { callbackUrl } = await searchParams;
+
   return (
     <main className="flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-sm">
@@ -21,10 +33,20 @@ export default function Login() {
           <CardDescription>Sign in to continue</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Button className="w-full gap-2">
-            <SiGithub />
-            Continue with GitHub
-          </Button>
+          {Object.values(providerMap).map((provider) => (
+            <form
+              key={provider.id}
+              action={handleSignIn.bind(null, {
+                providerId: provider.id,
+                redirectTo: callbackUrl ?? '/dashboard',
+              })}
+            >
+              <Button className="w-full gap-2" type="submit">
+                {providerIcons[provider.id] ?? null}
+                Sign in with {provider.name}
+              </Button>
+            </form>
+          ))}
         </CardContent>
         <CardFooter className="justify-center">
           <Muted className="text-xs">More providers coming soon</Muted>
