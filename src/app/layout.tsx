@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import './globals.css';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
 };
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export default function RootLayout({
   children,
@@ -37,7 +37,7 @@ export default function RootLayout({
         'h-full',
         'antialiased',
         'font-sans',
-        inter.variable
+        geist.variable
       )}
     >
       <body className="flex min-h-full flex-col">{children}</body>

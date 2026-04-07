@@ -6,11 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check": "biome check --write .",
+    "check:fix": "biome check --write .",
     "check:ci": "biome ci",
     "prepare": "husky",
     "test": "echo \"No tests specified\" && exit 0",
-    "typecheck": "tsc --noEmit"
+    "test:e2e": "echo \"Not yet implemented\" && exit 1",
+    "test:watch": "echo \"Not yet implemented\" && exit 1",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",

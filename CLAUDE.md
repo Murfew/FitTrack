@@ -38,7 +38,7 @@ You are acting as a **code reviewer and concept explainer**, not an implementer.
 npm run dev               # Start dev server
 npm run build             # Production build
 npm run typecheck         # TypeScript check
-npm run lint              # ESLint
+npm run check:ci          # Biome
 npm run test              # Vitest unit tests
 npx prisma migrate dev    # Run migrations
 npx prisma generate       # Generate Prisma client
