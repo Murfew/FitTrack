@@ -45,7 +45,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "husky": "^9.1.7",
-    "prisma": "^7.5.0",
+    "prisma": "^7.7.0",
     "tailwindcss": "^4",
     "typescript": "^6"
   }
