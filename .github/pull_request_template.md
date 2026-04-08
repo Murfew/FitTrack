@@ -6,15 +6,6 @@
 
 ---
 
-## Checklist
-
-- [ ] `npm run typecheck` passes
-- [ ] `npm run check:ci` passes
-- [ ] `npm run build` passes
-- [ ] Tests updated or confirmed not needed
-
----
-
 ## Testing
 
 <!-- How was this tested? Browser steps, unit tests, or N/A. -->
