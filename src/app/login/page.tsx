@@ -20,7 +20,7 @@ interface LoginPageProps {
   searchParams: Promise<{ callbackUrl?: string }>;
 }
 
-export default async function LoginPage({ searchParams }: LoginPageProps) {
+export default async function Page({ searchParams }: LoginPageProps) {
   const { callbackUrl } = await searchParams;
 
   return (
