@@ -1,4 +1,4 @@
-<!-- Closes #issue (delete if no issue) -->
+## Closes #issue
 
 ## Summary
 
