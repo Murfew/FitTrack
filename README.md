@@ -45,4 +45,4 @@ See `.env.example` for all required variables.
 
 ## Contributing
 
-All changes go through a PR. CI must pass before merging. See `.github/pull_request_template.md`.
+All changes go through a PR. CI must pass before merging. See `.github/pull-request-template.md`.

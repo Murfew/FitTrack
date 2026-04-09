@@ -24,4 +24,4 @@ Route segments: `loading.tsx` (skeleton), `error.tsx` (boundary), `not-found.tsx
 - Install via `npx shadcn add <component>` — never copy-paste from docs
 - Compose from primitives; don't rebuild what shadcn provides
 - Brand icons: use `@icons-pack/react-simple-icons` (Lucide dropped brand icons in v1)
-- Check `docs/DESIGN_SYSTEM.md` for token values and spacing scale
+- Check `docs/design-system.md` for token values and spacing scale

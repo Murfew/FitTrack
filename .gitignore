@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# superpowers brainstorming sessions
+.superpowers/
+
+# mcp server config
+.mcp.json

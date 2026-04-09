@@ -15,7 +15,7 @@
 ## Pull requests
 
 - Title matches commit convention: `feat|fix|chore: description`
-- Fill in the PR template at `.github/pull_request_template.md`
+- Fill in the PR template at `.github/pull-request-template.md`
 - One PR per issue, reference the issue number
 - Target `main`, squash-merge only
 

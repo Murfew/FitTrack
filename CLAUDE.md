@@ -68,7 +68,7 @@ If tests exist for the area, also run `npm run test`.
 - PR titles: `feat|fix|chore: description`
 - Squash-merge only, auto-delete branches
 - One issue per feature, one PR per issue
-- PR template at `.github/pull_request_template.md`
+- PR template at `.github/pull-request-template.md`
 
 ## CI pipeline
 
@@ -77,7 +77,7 @@ typecheck → lint (biome ci) → build → test
 
 ## Design system
 
-Read `@docs/DESIGN_SYSTEM.md` when working on any UI.
+Read `@docs/design-system.md` when working on any UI.
 
 ## MCP servers available
 
