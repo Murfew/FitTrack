@@ -1,11 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="96" fill="#3730a3"/>
-  <polyline
-    points="56,256 160,256 196,80 256,432 308,156 356,298 392,256 456,256"
-    fill="none"
-    stroke="white"
-    stroke-width="32"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+  <rect width="512" height="512" rx="96" fill="#111318"/>
+  <rect x="58"  y="352" width="84" height="100" rx="8" fill="#1e40c8"/>
+  <rect x="162" y="280" width="84" height="172" rx="8" fill="#1e40c8"/>
+  <rect x="266" y="192" width="84" height="260" rx="8" fill="#1e40c8"/>
+  <rect x="370" y="112" width="84" height="340" rx="8" fill="#1e40c8"/>
 </svg>

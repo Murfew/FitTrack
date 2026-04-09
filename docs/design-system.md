@@ -4,10 +4,13 @@ Reference this document when building or modifying any UI in FitTrack.
 
 ## Philosophy
 
-Minimal, modern, refined. FitTrack should feel like a premium tool — think
-Linear, Vercel, or Raycast. Clean surfaces with subtle depth. Dark-first with
-careful use of light and color to create hierarchy. Every element earns its
-space, but the result should feel polished and pleasurable to use, not sterile.
+Precise, deliberate, data-rich. FitTrack should feel like a well-made precision
+instrument — a serious athlete's training log, Garmin telemetry, a high-quality
+stopwatch. The interface recedes so the numbers come forward. Every element
+earns its space. If something can be removed without losing meaning, remove it.
+
+Dark, but not dramatic. The palette should feel like a well-lit gym at 5am —
+functional and focused. Not a gaming UI. Not a wellness app.
 
 Light mode ships in Phase 4. Until then, build dark-only but use CSS variables
 so light mode doesn't require rewrites.
@@ -16,63 +19,66 @@ so light mode doesn't require rewrites.
 
 ### Mood
 
-- Quiet confidence — not loud, not boring
-- Subtle depth — soft gradients, gentle glows on accent elements
-- Smooth interactions — transitions that feel responsive and intentional
-- Data-forward — numbers and progress are the hero, not chrome
+- Quiet confidence — not loud, not cluttered
+- Numbers are the hero — weights, reps, PRs get visual priority; chrome supports them
+- Restraint is the standard — if it doesn't carry information, it doesn't belong
+- Precision in every detail — number alignment, unit placement, spacing all considered
 
 ### Colors
 
-| Role          | Token                  | Value        | Usage                             |
-|---------------|------------------------|--------------|-----------------------------------|
-| Background    | `--background`         | zinc-950     | Page background                   |
-| Card          | `--card`               | zinc-900     | Card, dialog, popover surfaces    |
-| Muted         | `--muted`              | zinc-800     | Subtle backgrounds, disabled      |
-| Border        | `--border`             | zinc-800     | Card borders, dividers            |
-| Foreground    | `--foreground`         | zinc-50      | Primary text                      |
-| Muted fg      | `--muted-foreground`   | zinc-400     | Secondary text, placeholders      |
-| Accent        | `--primary`            | indigo-500   | `#6366f1` — buttons, links, focus |
-| Accent hover  | —                      | indigo-400   | `#818cf8` — hover states          |
-| Accent fg     | `--primary-foreground` | white        | Text on accent backgrounds        |
-| Destructive   | `--destructive`        | red-500      | Errors, delete actions            |
-| Success       | —                      | emerald-500  | Positive indicators, PRs          |
-| Warning       | —                      | amber-500    | Caution states                    |
+All color values use OKLCH. Neutrals are tinted with a faint cobalt coolness (hue ~255)
+to create subconscious cohesion with the cobalt accent.
 
-Indigo is the sole accent. Semantic colors (success, warning, destructive)
+| Role          | Token                  | OKLCH value                      | Usage                                  |
+|---------------|------------------------|----------------------------------|----------------------------------------|
+| Background    | `--background`         | `oklch(0.13 0.005 255)`          | Page background                        |
+| Card          | `--card`               | `oklch(0.19 0.005 255)`          | Card, dialog, popover surfaces         |
+| Muted         | `--muted`              | `oklch(0.25 0.005 255)`          | Subtle backgrounds, disabled           |
+| Border        | `--border`             | `oklch(0.28 0.005 255 / 60%)`    | Card borders, dividers                 |
+| Foreground    | `--foreground`         | `oklch(0.96 0.006 255)`          | Primary text — cool white, never pure  |
+| Muted fg      | `--muted-foreground`   | `oklch(0.58 0.01 255)`           | Secondary text, placeholders           |
+| Accent        | `--primary`            | `oklch(0.52 0.18 255)`           | Buttons, links, focus — deep cobalt    |
+| Accent hover  | —                      | `oklch(0.60 0.17 255)`           | Hover states on accent elements        |
+| Accent fg     | `--primary-foreground` | `oklch(0.96 0.006 255)`          | Text on accent backgrounds (light)     |
+| Destructive   | `--destructive`        | `oklch(0.65 0.22 25)`            | Errors, delete actions                 |
+| Success       | —                      | `oklch(0.60 0.14 155)`           | Positive indicators                    |
+| Warning       | —                      | `oklch(0.72 0.15 75)`            | Caution states                         |
+
+Deep cobalt is the sole accent. Semantic colors (success, warning, destructive)
 are for data states, not decoration.
 
 ### Gradients
 
-Use sparingly for subtle depth and visual interest:
+Use sparingly for subtle depth only:
 
-- **Accent gradient**: `bg-gradient-to-r from-indigo-500 to-indigo-400` — primary
-  CTAs, hero elements, or feature highlights. Not every button.
-- **Surface gradient**: `bg-gradient-to-b from-zinc-900 to-zinc-950` — subtle
-  depth on large card surfaces or page sections.
-- **Text gradient** (rare): `bg-gradient-to-r from-indigo-400 to-indigo-200
-  bg-clip-text text-transparent` — landing page headline or marketing moments
-  only. Never in the app shell.
-- **Glow**: `shadow-[0_0_15px_rgba(99,102,241,0.15)]` — subtle indigo glow on
-  focused or active accent elements. Barely visible, not neon.
+- **Surface gradient**: `from-[oklch(0.19_0.005_255)] to-[oklch(0.13_0.005_255)]` —
+  subtle depth on large card surfaces. Almost invisible; if you can tell at a glance,
+  it's too much.
+- **Glow**: `shadow-[0_0_15px_oklch(0.52_0.18_255_/_12%)]` — barely visible cobalt
+  glow on focused or active accent elements. Not neon.
 
 Rule: if you can't tell the gradient is there at a glance, it's about right.
+No gradient text. Ever.
 
 ### Typography
 
-| Element         | Font          | Size / Weight               | Class                          |
-|-----------------|---------------|-----------------------------|--------------------------------|
-| Page title      | Geist Sans    | text-2xl / font-bold        | `text-2xl font-bold`           |
-| Section heading | Geist Sans    | text-lg / font-semibold     | `text-lg font-semibold`        |
-| Card title      | Geist Sans    | text-base / font-medium     | `text-base font-medium`        |
-| Body            | Geist Sans    | text-sm / font-normal       | `text-sm`                      |
-| Caption / meta  | Geist Sans    | text-xs / font-normal       | `text-xs text-muted-foreground`|
-| Mono / data     | Geist Mono    | text-sm / font-normal       | `font-mono text-sm`            |
+Two font families. Load both via `next/font/google` in root layout.
 
-Geist loaded via `next/font/google` in root layout (Sans + Mono).
-Use Mono for numeric data, codes, and technical values.
+| Element         | Font                | Size / Weight               | Notes                              |
+|-----------------|---------------------|-----------------------------|-------------------------------------|
+| Page title      | Barlow Condensed    | text-2xl / font-bold        | Tight, athletic, uppercase optional |
+| Section heading | Barlow Condensed    | text-lg / font-semibold     |                                     |
+| Card title      | Barlow Condensed    | text-base / font-medium     |                                     |
+| Body            | Figtree             | text-sm / font-normal       |                                     |
+| Caption / meta  | Figtree             | text-xs / font-normal       | `text-muted-foreground`             |
+| Mono / data     | Geist Mono          | text-sm / font-normal       | Weights, reps, distances, codes     |
 
-Custom typography components at `src/components/ui/typography.tsx`:
-`H1`, `H2`, `H3`, `H4`, `P`, `Lead`, `Muted`, `InlineCode`.
+- `--font-display`: Barlow Condensed (headings, titles)
+- `--font-sans`: Figtree (body, labels, UI text)
+- `--font-mono`: Geist Mono (numeric data, technical values)
+
+Numbers and metrics get visual prominence — larger, heavier, monospaced.
+Right-align numbers in tables and lists. Units in `text-muted-foreground`.
 
 ### Spacing
 
@@ -87,42 +93,42 @@ Use Tailwind's default scale. Preferred values for consistency:
 | Between form fields    | `space-y-4`                       |
 | Inline element gap     | `gap-2`                           |
 
+Desktop: generous whitespace. Mobile (gym context): tight but clear — space is
+premium when you're between sets.
+
 ### Border radius
 
-Vega uses small radius. `rounded-md` (6px) for cards, inputs, buttons.
+Small radius throughout. `rounded-md` (6px) for cards, inputs, buttons.
 `rounded-full` for avatars only. Don't mix sizes in the same visual group.
 
 ### Icons
 
-- **UI icons**: Lucide React (`lucide-react`)
+- **UI icons**: Lucide React (`lucide-react`) or Phosphor (`@phosphor-icons/react`)
 - **Brand icons**: `@icons-pack/react-simple-icons`
 - Size: `h-4 w-4` (16px) inline, `h-5 w-5` (20px) standalone
 - Color: inherit from parent text color
+- Don't add icons next to text that already communicates the action
 
 ## Animation and motion
 
-Subtle, purposeful motion that makes the app feel alive without being distracting.
+Subtle and purposeful. The app should feel responsive, not animated.
 
 ### Transitions (use everywhere)
 
-- **Color/opacity changes**: `transition-colors duration-150` (buttons, links, hover states)
-- **Transform changes**: `transition-transform duration-200` (scale, translate)
-- **Combined**: `transition-all duration-200 ease-out` for multi-property transitions
+- **Color/opacity changes**: `transition-colors duration-150`
+- **Transform changes**: `transition-transform duration-200`
+- **Combined**: `transition-all duration-200 ease-out`
 
 ### Micro-interactions
 
-- **Button hover**: slight brightness shift, already handled by shadcn defaults
-- **Button press**: `active:scale-[0.98]` — subtle press-down feel
-- **Card hover** (interactive cards only): `hover:border-zinc-700 transition-colors`
-  or `hover:shadow-md transition-shadow` — pick one, not both
-- **Focus rings**: `ring-2 ring-indigo-500/50 ring-offset-2 ring-offset-zinc-950`
+- **Button press**: `active:scale-[0.98]`
+- **Card hover** (interactive cards only): `hover:border-[oklch(0.38_0.005_255)] transition-colors`
+- **Focus rings**: `ring-2 ring-[oklch(0.52_0.18_255_/_50%)] ring-offset-2 ring-offset-[oklch(0.13_0.005_255)]`
 
 ### Page-level motion
 
-- **Skeleton loading**: pulse animation on `Skeleton` components (shadcn default)
-- **Content entrance**: `animate-in fade-in-0 duration-300` for content appearing
-  after loading — use sparingly, only on the main content area
-- **Toast notifications**: slide in from top-right, auto-dismiss 5s
+- **Skeleton loading**: pulse animation on `Skeleton` components
+- **Content entrance**: `animate-in fade-in-0 duration-300` — use sparingly, main content area only
 
 ### What NOT to animate
 
@@ -130,7 +136,6 @@ Subtle, purposeful motion that makes the app feel alive without being distractin
 - Scroll-triggered effects or parallax
 - Decorative background animations
 - Anything that loops continuously
-- Layout shifts (elements changing size/position after render)
 
 ## Components
 
@@ -146,6 +151,7 @@ Subtle, purposeful motion that makes the app feel alive without being distractin
 | `link`        | Inline text actions               |
 
 Navigation: `asChild` + Next.js `Link` to avoid client boundaries.
+Don't make every button primary. Hierarchy matters.
 
 ### Cards
 
@@ -155,7 +161,7 @@ CardContent → main content
 CardFooter → actions (optional)
 ```
 
-Cards on `zinc-900` over page `zinc-950`. One level only — never nest cards.
+One level only — never nest cards. Not every list item needs a card.
 
 ### Forms
 
@@ -167,16 +173,18 @@ Cards on `zinc-900` over page `zinc-950`. One level only — never nest cards.
 
 ### Data display
 
-- `font-mono` for numbers (weights, reps, distances)
+- `font-mono` for numbers (weights, reps, distances, durations)
 - Right-align numbers in tables/lists
-- Units in `text-muted-foreground`: `135 lbs`
-- Trends: emerald up, red down, zinc neutral
+- Units in `text-muted-foreground`: `135 lbs`, `3.2 km`
+- Trends: success color up, destructive color down, muted neutral
+- Numbers get visual prominence — don't bury metrics in small text
 
 ### Empty states
 
 Every list/table needs one:
-- Centered icon (muted, 48px) + heading + description + CTA
-- Example: dumbbell icon + "No workouts yet" + "Log your first session" + [Add workout]
+- Simple: muted icon (48px) + heading + description + CTA
+- Teach the interface — explain what will appear here and why it matters
+- Example: dumbbell icon + "No workouts yet" + "Log your first session" + [Log workout]
 
 ### Loading states
 
@@ -205,6 +213,17 @@ Every list/table needs one:
 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 ```
 
+### Context-specific design
+
+Two primary usage contexts with different needs:
+
+- **Gym / mobile**: Fast input, glanceable data, large touch targets (44px min),
+  critical info above the fold, no nested navigation
+- **Home / desktop**: Higher data density acceptable, charts and progress views,
+  more screen real estate for comparison and review
+
+Design each context for its purpose. Don't just shrink the desktop layout.
+
 ### Navigation
 
 Phase 1–2: top bar (logo + sign out).
@@ -214,11 +233,11 @@ Phase 3+: TBD (sidebar or tabs).
 
 Library TBD (likely Recharts via shadcn charts).
 
-- Primary series: indigo-500
-- Secondary: indigo-300
-- Tertiary: zinc-500
-- Grid: zinc-800
-- Labels: zinc-400
+- Primary series: cobalt accent `oklch(0.52 0.18 255)`
+- Secondary: `oklch(0.60 0.17 255)` (lighter cobalt)
+- Tertiary: `oklch(0.45 0.005 85)` (muted neutral)
+- Grid: `oklch(0.28 0.005 85)`
+- Labels: `oklch(0.58 0.01 85)`
 
 ## Do NOT
 
@@ -226,8 +245,11 @@ Library TBD (likely Recharts via shadcn charts).
 - Use `rounded-full` on cards or inputs
 - Create custom button variants — use shadcn's built-in
 - Override shadcn component internals — compose and extend
-- Use Inter, Roboto, Arial, or system fonts — Geist only
-- Add heavy shadows (`shadow-lg`, `shadow-xl`) — keep to `shadow-sm` or the
-  defined glow effect
-- Use decorative elements that don't serve a function
-- Apply gradients to every surface — they're accents, not defaults
+- Use Inter, Roboto, Arial, Geist Sans, or system fonts for UI text — Figtree + Barlow Condensed
+- Add heavy shadows (`shadow-lg`, `shadow-xl`) — keep to `shadow-sm` or the defined glow
+- Use decorative elements that don't carry information
+- Apply gradients to text — ever
+- Use a colored stripe (`border-left` > 1px) as a card or callout accent
+- Use indigo, purple, or cyan-on-dark — that's the AI monoculture palette (cobalt at hue ~255 with restraint is intentional, not the cliché)
+- Add icons that restate what the adjacent text already says
+- Nest cards inside cards
