@@ -1,4 +1,4 @@
-import { Geist } from 'next/font/google';
+import { Barlow_Condensed, Figtree, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import type { Metadata } from 'next';
 import { cn } from '@/lib/utils';
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   description: 'Track your workouts, nutrition, steps and body weight.',
   icons: {
     icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/icon.svg', type: 'image/svg+xml' },
     ],
@@ -22,7 +21,21 @@ export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
 };
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display',
+});
+
+const figtree = Figtree({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+});
 
 export default function Layout({
   children,
@@ -37,7 +50,9 @@ export default function Layout({
         'h-full',
         'antialiased',
         'font-sans',
-        geist.variable
+        barlowCondensed.variable,
+        figtree.variable,
+        geistMono.variable
       )}
     >
       <body className="flex min-h-full flex-col">{children}</body>
