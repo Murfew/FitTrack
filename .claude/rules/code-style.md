@@ -12,8 +12,23 @@
 - Server components by default
 - `'use client'` only when the component uses hooks, event handlers, or browser APIs
 - `Button` with `asChild` + `Link` for navigation (avoids forcing client boundaries)
+- Internal navigation: always `next/link`, never `<a href>`
+- Images: always `next/image`, never `<img>` — handles sizing, lazy loading, and format optimisation automatically
 - Forms use `<form action={serverAction}>` pattern, not `onSubmit`
-- Every route segment that fetches data needs `loading.tsx`, `error.tsx`, `not-found.tsx`
+- `loading.tsx` / `error.tsx` / `not-found.tsx` only when the route actually needs them — see `ui-rules.md` for when each applies
+
+## Data fetching
+
+- Fetch in server components and pass data down as props — no client-side fetching for initial data
+- Parallel fetching with `Promise.all([...])` when a component needs multiple independent pieces of data — never sequential awaits
+- Deduplicate repeated DB/fetch calls within a render pass using `React.cache()` — wrap the data-fetching function, not the call site
+- Next.js 15 fetch is uncached by default; opt into caching explicitly with `revalidate` or `cache: 'force-cache'` only when stale data is acceptable
+
+## Metadata
+
+- Static routes: export a `metadata` object (`export const metadata: Metadata = { ... }`)
+- Dynamic routes: export `generateMetadata` to build metadata from params or fetched data
+- Every public-facing page should have at minimum `title` and `description`
 
 ## Naming
 
