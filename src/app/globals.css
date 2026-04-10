@@ -124,12 +124,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
+
   h1,
   h2,
   h3,
@@ -138,6 +141,7 @@
   h6 {
     font-family: var(--font-display);
   }
+
   code,
   kbd,
   pre,

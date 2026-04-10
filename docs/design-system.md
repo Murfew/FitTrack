@@ -64,14 +64,16 @@ No gradient text. Ever.
 
 Two font families. Load both via `next/font/google` in root layout.
 
-| Element         | Font                | Size / Weight               | Notes                              |
-|-----------------|---------------------|-----------------------------|-------------------------------------|
-| Page title      | Barlow Condensed    | text-2xl / font-bold        | Tight, athletic, uppercase optional |
-| Section heading | Barlow Condensed    | text-lg / font-semibold     |                                     |
-| Card title      | Barlow Condensed    | text-base / font-medium     |                                     |
-| Body            | Figtree             | text-sm / font-normal       |                                     |
-| Caption / meta  | Figtree             | text-xs / font-normal       | `text-muted-foreground`             |
-| Mono / data     | Geist Mono          | text-sm / font-normal       | Weights, reps, distances, codes     |
+| Name         | Element  | Font             | Tailwind classes                                      |
+|--------------|----------|------------------|-------------------------------------------------------|
+| H1           | `<h1>`   | Barlow Condensed | `text-4xl font-bold tracking-tight`                   |
+| H2           | `<h2>`   | Barlow Condensed | `text-2xl font-semibold tracking-tight`               |
+| H3           | `<h3>`   | Barlow Condensed | `text-xl font-semibold`                               |
+| H4           | `<h4>`   | Barlow Condensed | `text-base font-medium`                               |
+| Lead         | `<p>`    | Figtree          | `text-base text-muted-foreground`                     |
+| P            | `<p>`    | Figtree          | `text-sm`                                             |
+| Muted        | `<p>`    | Figtree          | `text-xs text-muted-foreground`                       |
+| InlineCode   | `<code>` | Geist Mono       | `font-mono text-sm bg-muted rounded px-1 py-0.5`      |
 
 - `--font-display`: Barlow Condensed (headings, titles)
 - `--font-sans`: Figtree (body, labels, UI text)
@@ -79,6 +81,8 @@ Two font families. Load both via `next/font/google` in root layout.
 
 Numbers and metrics get visual prominence — larger, heavier, monospaced.
 Right-align numbers in tables and lists. Units in `text-muted-foreground`.
+
+Heading elements (`h1`–`h6`) automatically receive `font-display` via the base layer in `globals.css`. `<code>` receives `font-mono` the same way — the Tailwind classes above handle size and surface styling only.
 
 ### Spacing
 
