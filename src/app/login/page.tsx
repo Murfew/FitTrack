@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Muted } from '@/components/ui/typography';
+import { H2, Muted } from '@/components/ui/typography';
 import { providerMap } from '@/lib/auth';
 
 const providerIcons: Record<string, React.ReactNode> = {
@@ -27,9 +27,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
     <main className="flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-sm">
         <CardHeader className="items-center text-center">
-          <CardTitle className="font-bold text-2xl text-foreground tracking-tight">
-            FitTrack
-          </CardTitle>
+          <CardTitle>FitTrack</CardTitle>
           <CardDescription>Sign in to continue</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -49,7 +47,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
           ))}
         </CardContent>
         <CardFooter className="justify-center">
-          <Muted className="text-xs">More providers coming soon</Muted>
+          <Muted>More providers coming soon</Muted>
         </CardFooter>
       </Card>
     </main>
