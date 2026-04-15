@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { H1, Lead } from '@/components/ui/typography';
 
 export const metadata: Metadata = {
-  title: '404 | FitTrack',
+  title: '404',
   description: 'Page not found.',
 };
 
