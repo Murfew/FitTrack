@@ -4,19 +4,19 @@ A full-stack workout tracking app to log sessions, track progress, and visualize
 
 ## Tech Stack
 
-- **Framework:** Next.js (App Router, TypeScript)
-- **Styling:** Tailwind CSS + shadcn/ui
-- **Database:** Supabase (Postgres) + Prisma ORM
-- **Auth:** NextAuth v5
-- **Testing:** Vitest + Playwright
-- **CI/CD:** GitHub Actions + Vercel
+- **Framework:** [Next.js (App Router, TypeScript)](https://nextjs.org/docs/app)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Database:** [Supabase (Postgres)](https://supabase.com/) + [Prisma ORM](https://www.prisma.io/)
+- **Auth:** [NextAuth v5](https://authjs.dev/)
+- **Testing:** [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/)
+- **CI/CD:** [GitHub Actions](https://github.com/features/actions) + [Vercel](https://vercel.com/)
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 20+
-- A Supabase project with connection strings
+- Node version specified in `.nvmrc`. Use `nvm use` to automatically use the correct version.
+- Create a free project at Supabase and copy the connection string from Settings → Database.
 
 ### Setup
 
@@ -27,11 +27,11 @@ npm install
 # Copy env file and fill in your values
 cp .env.example .env
 
+# Generate your AuthJs secret and use it as value for AUTH_SECRET
+npx auth secret
+
 # Run database migrations
 npm run db:migrate
-
-# Generate Prisma client
-npm run db:generate
 
 # Seed database
 npm run db:seed
@@ -40,12 +40,20 @@ npm run db:seed
 npm run dev
 ```
 
+Create a Github OAuth App at [github.com/settings/developers](github.com/settings/developers). Set the callback URL to `http://localhost:3000/api/auth/callback/github`. Copy the Client ID and Secret into `.env`.
+
 App runs at [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
 See `.env.example` for all required variables.
 
+## Conventions
+
+See `.claude/rules/git-workflow.md` for all git related repo conventions.
+Linting and formatting is handled by biome. Run `npm run check:fix` to auto-fix issues or `npm run check:ci` to simply flag them.
+
 ## Contributing
 
 All changes go through a PR. CI must pass before merging. See `.github/pull-request-template.md`.
+
