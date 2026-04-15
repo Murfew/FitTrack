@@ -28,10 +28,13 @@ npm install
 cp .env.example .env
 
 # Run database migrations
-npx prisma migrate dev
+npm run db:migrate
 
 # Generate Prisma client
-npx prisma generate
+npm run db:generate
+
+# Seed database
+npm run db:seed
 
 # Start the dev server
 npm run dev
