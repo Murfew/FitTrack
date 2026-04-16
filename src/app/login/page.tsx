@@ -1,4 +1,4 @@
-import { SiGithub } from '@icons-pack/react-simple-icons';
+import { SiGithub, SiGoogle } from '@icons-pack/react-simple-icons';
 import { handleSignIn } from '@/actions/auth';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,11 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { H2, Muted } from '@/components/ui/typography';
+import { Muted } from '@/components/ui/typography';
 import { providerMap } from '@/lib/auth';
 
 const providerIcons: Record<string, React.ReactNode> = {
   github: <SiGithub />,
+  google: <SiGoogle />,
 };
 
 interface LoginPageProps {

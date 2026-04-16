@@ -4,7 +4,7 @@ import * as z from 'zod';
 export const env = createEnv({
   server: {
     DATABASE_URL: z.url(),
-    AUTH_GITHUB_ID: z.string().regex(/^(Iv[A-Za-z0-9]{18}|[a-f0-9]{20})$/),
+    AUTH_GITHUB_ID: z.string().regex(/^Ov[A-Za-z0-9]{18}$/),
     AUTH_GITHUB_SECRET: z
       .string()
       .length(40)
