@@ -5,7 +5,16 @@ import GitHub from 'next-auth/providers/github';
 import Google from 'next-auth/providers/google';
 import { prisma } from './prisma';
 
-const providers: Provider[] = [GitHub, Google];
+const providers: Provider[] = [
+  GitHub,
+  Google({
+    authorization: {
+      params: {
+        prompt: 'select_account',
+      },
+    },
+  }),
+];
 
 export const providerMap = providers.map((provider) => {
   if (typeof provider === 'function') {
