@@ -4,9 +4,16 @@ import * as z from 'zod';
 export const env = createEnv({
   server: {
     DATABASE_URL: z.url(),
-    AUTH_GITHUB_ID: z.string().min(1),
-    AUTH_GITHUB_SECRET: z.string().min(1),
-    AUTH_SECRET: z.string().min(1),
+    AUTH_GITHUB_ID: z.string().regex(/^Ov[A-Za-z0-9]{18}$/),
+    AUTH_GITHUB_SECRET: z
+      .string()
+      .length(40)
+      .regex(/^[a-fA-F0-9]+$/),
+    AUTH_GOOGLE_ID: z
+      .string()
+      .regex(/^\d+-[a-z0-9]+\.apps\.googleusercontent\.com$/),
+    AUTH_GOOGLE_SECRET: z.string().regex(/^GOCSPX-[A-Za-z0-9_-]{24,}$/),
+    AUTH_SECRET: z.string().min(32),
   },
 
   experimental__runtimeEnv: process.env,
