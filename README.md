@@ -7,7 +7,7 @@ A full-stack workout tracking app to log sessions, track progress, and visualize
 - **Framework:** [Next.js (App Router, TypeScript)](https://nextjs.org/docs/app)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
 - **Database:** [Supabase (Postgres)](https://supabase.com/) + [Prisma ORM](https://www.prisma.io/)
-- **Auth:** [NextAuth v5](https://authjs.dev/)
+- **Auth:** [BetterAuth](https://better-auth.com/)
 - **Testing:** [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/)
 - **CI/CD:** [GitHub Actions](https://github.com/features/actions) + [Vercel](https://vercel.com/)
 
@@ -25,10 +25,10 @@ A full-stack workout tracking app to log sessions, track progress, and visualize
 npm install
 
 # Copy env file and fill in your values
-cp .env.example .env.local
+cp .env.example .env
 
-# Generate your AuthJs secret and use it as value for AUTH_SECRET
-npx auth secret
+# Generate your BetterAuth secret and use it as value for BETTER_AUTH_SECRET
+openssl rand -base64 32
 
 # Run database migrations
 npm run db:migrate
@@ -44,7 +44,7 @@ npm run dev
 
 **GitHub**
 
-Create a GitHub OAuth App at [github.com/settings/developers](https://github.com/settings/developers). Set the callback URL to `http://localhost:3000/api/auth/callback/github`. Copy the Client ID and Secret into `.env.local`.
+Create a GitHub OAuth App at [github.com/settings/developers](https://github.com/settings/developers). Set the callback URL to `http://localhost:3000/api/auth/callback/github`. Copy the Client ID and Secret into `.env`.
 
 **Google**
 
@@ -53,7 +53,7 @@ Create a GitHub OAuth App at [github.com/settings/developers](https://github.com
 3. Set application type to **Web application**
 4. Add authorized JavaScript origin: `http://localhost:3000`
 5. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
-6. Copy the Client ID and Secret into `.env.local`
+6. Copy the Client ID and Secret into `.env`
 7. In **APIs & Services → OAuth consent screen**, add your Google account as a test user
 
 > **Production:** Add your Vercel URL to the origins and redirect URIs for both providers. For Google, also publish the consent screen. GitHub requires a separate OAuth App per environment.

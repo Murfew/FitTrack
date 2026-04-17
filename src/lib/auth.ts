@@ -1,34 +1,22 @@
-import { PrismaAdapter } from '@auth/prisma-adapter';
-import NextAuth from 'next-auth';
-import type { Provider } from 'next-auth/providers';
-import GitHub from 'next-auth/providers/github';
-import Google from 'next-auth/providers/google';
+import { betterAuth } from 'better-auth';
+import { prismaAdapter } from 'better-auth/adapters/prisma';
+import { env } from '@/env';
 import { prisma } from './prisma';
 
-const providers: Provider[] = [
-  GitHub,
-  Google({
-    authorization: {
-      params: {
-        prompt: 'select_account',
-      },
-    },
+export const auth = betterAuth({
+  database: prismaAdapter(prisma, {
+    provider: 'postgresql',
   }),
-];
-
-export const providerMap = providers.map((provider) => {
-  if (typeof provider === 'function') {
-    const providerData = provider();
-    return { id: providerData.id, name: providerData.name };
-  } else {
-    return { id: provider.id, name: provider.name };
-  }
-});
-
-export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
-  providers,
-  pages: {
-    signIn: '/login',
+  secret: env.BETTER_AUTH_SECRET,
+  baseURL: env.BETTER_AUTH_URL,
+  socialProviders: {
+    github: {
+      clientId: env.AUTH_GITHUB_ID,
+      clientSecret: env.AUTH_GITHUB_SECRET,
+    },
+    google: {
+      clientId: env.AUTH_GOOGLE_ID,
+      clientSecret: env.AUTH_GOOGLE_SECRET,
+    },
   },
 });

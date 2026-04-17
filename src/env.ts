@@ -13,7 +13,8 @@ export const env = createEnv({
       .string()
       .regex(/^\d+-[a-z0-9]+\.apps\.googleusercontent\.com$/),
     AUTH_GOOGLE_SECRET: z.string().regex(/^GOCSPX-[A-Za-z0-9_-]{24,}$/),
-    AUTH_SECRET: z.string().min(32),
+    BETTER_AUTH_SECRET: z.string().min(32),
+    BETTER_AUTH_URL: z.url(),
   },
 
   experimental__runtimeEnv: process.env,
