@@ -5,6 +5,7 @@ async function main() {
     where: { email: 'user@example.com' },
     update: {},
     create: {
+      id: crypto.randomUUID(),
       email: 'user@example.com',
       name: 'Example User',
     },

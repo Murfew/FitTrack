@@ -2,8 +2,8 @@
 
 import { SiGithub, SiGoogle } from '@icons-pack/react-simple-icons';
 import { Button } from '@/components/ui/button';
-import { type ProviderId, providers } from '@/lib/auth';
 import { signIn } from '@/lib/auth-client';
+import { type ProviderId, providers } from '@/lib/auth-providers';
 
 const providerIcons: Record<ProviderId, React.ReactNode> = {
   github: <SiGithub />,
