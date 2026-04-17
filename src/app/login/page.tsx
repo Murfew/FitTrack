@@ -1,6 +1,3 @@
-import { SiGithub, SiGoogle } from '@icons-pack/react-simple-icons';
-import { handleSignIn } from '@/actions/auth';
-import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -10,19 +7,14 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Muted } from '@/components/ui/typography';
-import { providerMap } from '@/lib/auth';
-
-const providerIcons: Record<string, React.ReactNode> = {
-  github: <SiGithub />,
-  google: <SiGoogle />,
-};
+import SignInButtons from './_components/SignInButtons';
 
 interface LoginPageProps {
-  searchParams: Promise<{ callbackUrl?: string }>;
+  searchParams: Promise<{ callbackURL?: string }>;
 }
 
 export default async function Page({ searchParams }: LoginPageProps) {
-  const { callbackUrl } = await searchParams;
+  const { callbackURL } = await searchParams;
 
   return (
     <main className="flex min-h-screen items-center justify-center">
@@ -32,20 +24,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
           <CardDescription>Sign in to continue</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          {Object.values(providerMap).map((provider) => (
-            <form
-              key={provider.id}
-              action={handleSignIn.bind(null, {
-                providerId: provider.id,
-                redirectTo: callbackUrl ?? '/dashboard',
-              })}
-            >
-              <Button className="w-full gap-2" type="submit">
-                {providerIcons[provider.id] ?? null}
-                Sign in with {provider.name}
-              </Button>
-            </form>
-          ))}
+          <SignInButtons callbackURL={callbackURL ?? '/dashboard'} />
         </CardContent>
         <CardFooter className="justify-center">
           <Muted>More providers coming soon</Muted>

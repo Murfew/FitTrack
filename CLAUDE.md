@@ -6,7 +6,7 @@ improvements over time. Built as both a portfolio project and a personal tool.
 ## Stack
 
 - Next.js 16 (App Router, TypeScript strict mode)
-- NextAuth v5, Prisma adapter (GitHub OAuth done, Google pending)
+- Better Auth (GitHub + Google OAuth via `socialProviders`)
 - Prisma + PostgreSQL via Supabase (`@prisma/adapter-pg` driver adapter)
 - Tailwind CSS + shadcn/ui (Vega style)
 - Biome (linting + formatting — not ESLint, not Prettier)
@@ -40,8 +40,9 @@ If tests exist for the area, also run `npm run test`.
 - **Custom hooks**: `src/hooks/`
 - **Utilities**: `src/lib/` (includes `prisma.ts` singleton and `cn()` helper)
 - **Types**: `src/types/`
-- **Auth config**: `auth.ts` at project root
-- **Route protection**: `proxy.ts` at project root (NOT `middleware.ts`)
+- **Auth config**: `src/lib/auth.ts` (server) + `src/lib/auth-client.ts` (client)
+- **Auth API handler**: `src/app/api/auth/[...all]/route.ts`
+- **Route protection**: `auth.api.getSession` checked in layout/page server components, not middleware
 - **Database schema**: `prisma/schema.prisma`
 
 ## Key conventions
@@ -50,8 +51,8 @@ If tests exist for the area, also run `npm run test`.
 - Server components by default; `'use client'` only when hooks/listeners needed
 - Server actions for all data mutations — no separate API routes for internal use
 - No direct DB calls from client components
-- Auth sign-in/sign-out via server actions in `src/actions/auth.ts`
-- Protected routes: `proxy.ts` for redirects, auth checks at the data layer
+- Auth sign-in/sign-out via `signIn`/`signOut` from `@/lib/auth-client` (client) or `auth.api` (server)
+- Protected routes: middleware for redirects, auth checks at the data layer
 - Prisma client: always import from `@/lib/prisma`, never instantiate directly
 
 ## Database conventions
@@ -59,7 +60,7 @@ If tests exist for the area, also run `npm run test`.
 - All models use `cuid()` for IDs
 - Only `User` model has `createdAt`/`updatedAt` timestamps
 - Field names: camelCase in Prisma, snake_case in DB via `@map`/`@@map`
-- Exception: `Account` model fields left as-is for NextAuth adapter compatibility
+- `Account`, `Session`, and `Verification` model fields follow Better Auth's schema conventions
 - Always run `prisma generate` after `prisma migrate`
 
 ## Git workflow
@@ -90,7 +91,7 @@ Read `@docs/design-system.md` when working on any UI.
 ## What NOT to do
 
 - Don't use ESLint or Prettier — Biome handles both
-- Don't use `middleware.ts` — Next.js 16 uses `proxy.ts`
+- Don't use middleware for auth checks — Better Auth recommends checking sessions in layout/page server components directly
 - Don't add `createdAt`/`updatedAt` to models other than `User` unless discussed
 - Don't install packages without checking if shadcn already provides the component
 - Don't use `require()` — ES modules only
