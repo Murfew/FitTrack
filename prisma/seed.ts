@@ -17,7 +17,7 @@ async function main() {
     data: {
       name: 'Push Day',
       date: new Date('2026-04-18T09:00:00Z'),
-      duration: 3300,
+      durationSeconds: 3300,
       userId: user.id,
       exercises: {
         create: [
@@ -52,7 +52,7 @@ async function main() {
     data: {
       name: 'Pull Day',
       date: new Date('2026-04-20T10:30:00Z'),
-      duration: 3600,
+      durationSeconds: 3600,
       userId: user.id,
       exercises: {
         create: [
