@@ -71,14 +71,14 @@ model Verification {
 }
 
 model Workout {
-  id        String     @id @default(cuid())
-  name      String
-  notes     String?
-  date      DateTime
-  duration  Int?
-  userId    String     @map("user_id")
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  exercises Exercise[]
+  id               String     @id @default(cuid())
+  name             String
+  notes            String?
+  date             DateTime
+  durationSeconds  Int?
+  userId           String     @map("user_id")
+  user             User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercises        Exercise[]
 
   @@index([userId])
   @@map("workouts")
@@ -92,6 +92,7 @@ model Exercise {
   workout   Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
   sets      Set[]
 
+  @@index([workoutId])
   @@map("exercises")
 }
 
@@ -104,6 +105,7 @@ model Set {
   exerciseId String   @map("exercise_id")
   exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
 
+  @@index([exerciseId])
   @@map("sets")
 }
 

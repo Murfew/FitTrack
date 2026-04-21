@@ -27,7 +27,7 @@ npx prisma migrate deploy  # Production migrations (CI/CD)
 
 Always run before considering a task complete:
 ```bash
-npm run typecheck && npm run check && npm run build
+npm run typecheck && npm run check:ci && npm run build
 ```
 If tests exist for the area, also run `npm run test`.
 
