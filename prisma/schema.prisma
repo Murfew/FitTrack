@@ -16,6 +16,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  workouts      Workout[]
 
   @@unique([email])
   @@map("user")
@@ -68,3 +69,46 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
+model Workout {
+  id        String     @id @default(cuid())
+  name      String
+  notes     String?
+  date      DateTime
+  duration  Int?
+  userId    String     @map("user_id")
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercises Exercise[]
+
+  @@index([userId])
+  @@map("workouts")
+}
+
+model Exercise {
+  id        String   @id @default(cuid())
+  name      String
+  order     Int
+  workoutId String   @map("workout_id")
+  workout   Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  sets      Set[]
+
+  @@map("exercises")
+}
+
+model Set {
+  id         String   @id @default(cuid())
+  order      Int
+  reps       Int?
+  weight     Float?
+  unit       Unit     @default(LBS)
+  exerciseId String   @map("exercise_id")
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+
+  @@map("sets")
+}
+
+enum Unit {
+  KG
+  LBS
+}
+
