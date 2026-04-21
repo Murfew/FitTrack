@@ -10,7 +10,7 @@
 
 - Conventional format: `feat|fix|chore: lowercase description`
 - Keep commits atomic — one logical change per commit
-- Run `npm run typecheck && npm run check` before committing
+- Run `npm run typecheck && npm run check:ci` before committing
 
 ## Pull requests
 
